@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Babita ❤️</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+
+    body{
+      height:100vh;
+      background:radial-gradient(circle at top,#ffd1dc,#7a0019);
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;color:white
+    }
+
+    /* Floating hearts */
+    .heart{position:absolute;width:14px;height:14px;background:#ff4d6d;transform:rotate(45deg);animation:floatUp 8s linear infinite;opacity:.85}
+    .heart:before,.heart:after{content:'';position:absolute;width:14px;height:14px;background:#ff4d6d;border-radius:50%}
+    .heart:before{left:-7px}.heart:after{top:-7px}
+    @keyframes floatUp{0%{transform:translateY(100vh) rotate(45deg);opacity:0}10%{opacity:.9}100%{transform:translateY(-10vh) rotate(45deg);opacity:0}}
+
+    .container{text-align:center;max-width:90%;z-index:2}
+
+    /* Hyper‑realistic style Plumeria (CSS illusion) */
+    .plumeria{position:relative;width:180px;height:180px;margin:0 auto 28px;transform:scale(0);animation:bloom 3s ease-out forwards}
+    .petal{
+      position:absolute;inset:20px;border-radius:50% 50% 60% 60%;
+      background:radial-gradient(circle at 30% 30%,#fff,#fff 35%,#ffe6b3 60%,#ffd27a 75%,#ffb703 100%);
+      filter:drop-shadow(0 6px 10px rgba(0,0,0,.25));
+      transform-origin:50% 90%;opacity:0;animation:openPetal 2.2s ease-out forwards
+    }
+    .petal:nth-child(1){transform:rotate(0deg);animation-delay:1s}
+    .petal:nth-child(2){transform:rotate(72deg);animation-delay:1.2s}
+    .petal:nth-child(3){transform:rotate(144deg);animation-delay:1.4s}
+    .petal:nth-child(4){transform:rotate(216deg);animation-delay:1.6s}
+    .petal:nth-child(5){transform:rotate(288deg);animation-delay:1.8s}
+
+    .center{
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:38px;height:38px;border-radius:50%;
+      background:radial-gradient(circle,#ffb703,#ff8c00);
+      box-shadow:0 0 18px rgba(255,183,3,.9);
+      opacity:0;animation:fadeIn 1s ease forwards;animation-delay:2.6s
+    }
+
+    h1{font-size:2.2rem;opacity:0;animation:fadeIn 2s ease forwards;animation-delay:3.8s}
+
+    /* Typing text */
+    .typing{margin-top:14px;font-size:1.4rem;min-height:1.6em;border-right:2px solid rgba(255,255,255,.8);white-space:nowrap;overflow:hidden;animation:blink 1s step-end infinite;opacity:0}
+    @keyframes blink{50%{border-color:transparent}}
+
+    .buttons{margin-top:30px;opacity:0;animation:fadeIn 2s ease forwards;animation-delay:7s}
+    button{padding:12px 25px;margin:10px;font-size:1.1rem;border:none;border-radius:25px;cursor:pointer;transition:transform .2s ease,background .2s ease}
+    .yes{background:#ff4d6d;color:#fff}.yes:hover{transform:scale(1.1);background:#ff1a4b}
+    .no{background:transparent;color:#fff;border:1px solid #fff;position:relative}
+
+    /* Fireworks */
+    .firework{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:transparent}
+    .spark{position:absolute;width:4px;height:4px;border-radius:50%;background:hsl(var(--h),90%,60%);transform:translate(-50%,-50%);animation:spark 900ms ease-out forwards}
+    @keyframes spark{to{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y)));opacity:0}}
+
+    @keyframes bloom{to{transform:scale(1)}}
+    @keyframes openPetal{to{opacity:1}}
+    @keyframes fadeIn{to{opacity:1}}
+  </style>
+</head>
+<body>
+  <!-- MUSIC NOTE: upload your own Love Nwantiti MP3 named 'love-nwantiti.mp3' in the same folder -->
+  <audio autoplay loop>
+    <source src="love-nwantiti.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <div class="plumeria">
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="center"></div>
+    </div>
+
+    <h1>Babita ❤️</h1>
+    <div id="typing" class="typing"></div>
+
+    <div class="buttons">
+      <button class="yes" onclick="yesClicked()">Yes 💖</button>
+      <button class="no" onmouseover="moveButton(this)">No 🙈</button>
+    </div>
+  </div>
+
+  <script>
+    // Floating hearts
+    function createHeart(){const h=document.createElement('div');h.className='heart';h.style.left=Math.random()*100+'vw';h.style.animationDuration=6+Math.random()*6+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),12000)}
+    setInterval(createHeart,500)
+
+    // Typing animation
+    const text='Will you be my Valentine? 🌸';const el=document.getElementById('typing');let i=0;
+    setTimeout(()=>{el.style.opacity=1;const t=setInterval(()=>{el.textContent+=text.charAt(i++);if(i>=text.length)clearInterval(t)},80)},4800)
+
+    function fireworks(){
+      for(let k=0;k<6;k++){
+        const fw=document.createElement('div');fw.className='firework';fw.style.left=20+Math.random()*60+'vw';fw.style.top=20+Math.random()*40+'vh';
+        for(let i=0;i<18;i++){
+          const s=document.createElement('div');s.className='spark';
+          s.style.setProperty('--x', (Math.random()*160-80)+'px');
+          s.style.setProperty('--y', (Math.random()*160-80)+'px');
+          s.style.setProperty('--h', Math.floor(Math.random()*360));
+          fw.appendChild(s)
+        }
+        document.body.appendChild(fw);setTimeout(()=>fw.remove(),1000)
+      }
+    }
+
+    function yesClicked(){
+      document.querySelector('.buttons').style.display='none';
+      fireworks();setTimeout(fireworks,400);setTimeout(fireworks,800);
+      setTimeout(()=>{
+        document.body.innerHTML=`
+          <div style="text-align:center;color:white;">
+            <h1 style="font-size:2.4rem;">You have made me the happiest person ❤️</h1>
+            <p style="font-size:1.4rem;margin-top:14px;">Happy Valentine’s Day in advance, my Queen 👑🌸</p>
+          </div>`;
+      },1300)
+    }
+
+    function moveButton(btn){const x=Math.random()*(innerWidth-btn.offsetWidth);const y=Math.random()*(innerHeight-btn.offsetHeight);btn.style.position='absolute';btn.style.left=x+'px';btn.style.top=y+'px'}
+  </script>
+</body>
+</html>
